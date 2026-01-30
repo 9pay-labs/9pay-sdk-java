@@ -61,6 +61,16 @@ public class CreatePaymentRequest implements RequestInterface {
         return this;
     }
 
+    public CreatePaymentRequest withBackUrl(String backUrl) {
+        this.backUrl = backUrl;
+        return this;
+    }
+
+    public CreatePaymentRequest withReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+        return this;
+    }
+
     public CreatePaymentRequest withCurrency(String currency) {
         if (!Currency.isValid(currency)) {
             throw new IllegalArgumentException("Invalid currency: " + currency);

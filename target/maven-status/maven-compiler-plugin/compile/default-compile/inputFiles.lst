@@ -11,6 +11,7 @@
 /Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/enums/Currency.java
 /Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/utils/Signature.java
 /Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/config/NinePayConfig.java
+/Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/example/CreatePaymentExample.java
 /Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/utils/Environment.java
 /Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/request/RequestInterface.java
 /Users/mac24h/Documents/docker-work/src/sdk-java/src/main/java/com/ninepay/gateway/response/PaymentResponse.java

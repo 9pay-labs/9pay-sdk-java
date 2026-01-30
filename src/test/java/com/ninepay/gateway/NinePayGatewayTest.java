@@ -9,24 +9,54 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 class NinePayGatewayTest {
 
     private NinePayGateway gateway;
 
     @BeforeEach
     void setUp() throws InvalidConfigException {
-        NinePayConfig config = new NinePayConfig("MID", "SECRET", "CHECKSUM", "SANDBOX");
+        String env = null;
+        String merchantId = "MID";
+        String secretKey = "SECRET";
+        String checksumKey = "CHECKSUM";
+
+        try {
+            Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+            env = dotenv.get("NINEPAY_ENV");
+            if (dotenv.get("NINEPAY_MERCHANT_ID") != null) merchantId = dotenv.get("NINEPAY_MERCHANT_ID");
+            if (dotenv.get("NINEPAY_SECRET_KEY") != null) secretKey = dotenv.get("NINEPAY_SECRET_KEY");
+            if (dotenv.get("NINEPAY_CHECKSUM_KEY") != null) checksumKey = dotenv.get("NINEPAY_CHECKSUM_KEY");
+        } catch (Exception e) {
+            // .env file might not exist in CI/CD or some environments
+        }
+
+        if (env == null || env.isEmpty()) {
+            env = System.getenv("NINEPAY_ENV");
+        }
+        
+        if (env == null || env.isEmpty()) {
+             env = "SANDBOX";
+        }
+        NinePayConfig config = new NinePayConfig(merchantId, secretKey, checksumKey, env);
         gateway = new NinePayGateway(config);
     }
 
     @Test
     void testCreatePayment() throws Exception {
-        CreatePaymentRequest request = new CreatePaymentRequest("INV123", "1000", "Test");
+        CreatePaymentRequest request = new CreatePaymentRequest("INV123", "1000", "Test")
+                .withReturnUrl("https://example.com/return");
         ResponseInterface response = gateway.createPayment(request);
 
         assertTrue(response.isSuccess());
         assertNotNull(response.getData().get("redirect_url"));
         String redirectUrl = (String) response.getData().get("redirect_url");
+        System.out.println("Redirect URL: " + redirectUrl);
+        
+        // base64 decode baseEncode=...
+        // print decoded params
+        
         assertTrue(redirectUrl.contains("baseEncode="));
         assertTrue(redirectUrl.contains("signature="));
     }

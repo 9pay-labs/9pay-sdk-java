@@ -15,3 +15,4 @@ com/ninepay/gateway/response/ResponseInterface.class
 com/ninepay/gateway/request/RequestInterface.class
 com/ninepay/gateway/enums/PaymentMethod.class
 com/ninepay/gateway/config/NinePayConfig.class
+com/ninepay/gateway/example/CreatePaymentExample.class

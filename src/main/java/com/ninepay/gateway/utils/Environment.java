@@ -8,6 +8,9 @@ public final class Environment {
         if ("PRODUCTION".equalsIgnoreCase(env)) {
             return PROD;
         }
+        if (env != null && (env.startsWith("http://") || env.startsWith("https://"))) {
+            return env;
+        }
         return SAND;
     }
 }
