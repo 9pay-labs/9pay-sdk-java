@@ -1,5 +1,9 @@
 # 9PAY Payment Gateway Java SDK
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.9pay-labs/ninepay-sdk)](https://central.sonatype.com/artifact/io.github.9pay-labs/ninepay-sdk)
+[![Java](https://img.shields.io/badge/Java-11%2B-blue)](https://www.oracle.com/java/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 Official Java SDK for integrating **9PAY Payment Gateway**.
 
 This package allows you to:
@@ -11,7 +15,7 @@ This package allows you to:
 
 ## Requirements
 
-- Java **8** or higher
+- Java **11** or higher
 - Dependencies:
     - Jackson Databind
     - OkHttp
@@ -21,14 +25,20 @@ This package allows you to:
 
 ## Installation
 
-Add the following dependency to your `pom.xml`:
+### Maven
 
 ```xml
 <dependency>
-  <groupId>com.ninepay.gateway</groupId>
-  <artifactId>ninepay-sdk-java</artifactId>
+  <groupId>io.github.9pay-labs</groupId>
+  <artifactId>ninepay-sdk</artifactId>
   <version>1.0.0</version>
 </dependency>
+```
+
+### Gradle
+
+```groovy
+implementation 'io.github.9pay-labs:ninepay-sdk:1.0.0'
 ```
 
 ---
