@@ -5,7 +5,6 @@ import com.ninepay.gateway.config.NinePayConfig;
 import com.ninepay.gateway.request.CreatePaymentRequest;
 import com.ninepay.gateway.response.PaymentResponse;
 import com.ninepay.gateway.response.ResponseInterface;
-import com.ninepay.gateway.utils.Environment;
 import com.ninepay.gateway.utils.MessageBuilder;
 import com.ninepay.gateway.utils.Signature;
 import com.ninepay.gateway.request.PayerAuthRequest;
@@ -46,7 +45,7 @@ public class NinePayGateway implements PaymentGatewayInterface {
         this.clientId = config.getMerchantId();
         this.secretKey = config.getSecretKey();
         this.checksumKey = config.getChecksumKey();
-        this.endpoint = Environment.endpoint(config.getEnv());
+        this.endpoint = config.getGatewayUrl();
         this.httpClient = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .readTimeout(15, TimeUnit.SECONDS)

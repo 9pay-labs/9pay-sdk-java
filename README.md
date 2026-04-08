@@ -52,7 +52,7 @@ NinePayConfig config = new NinePayConfig(
     "YOUR_MERCHANT_ID",
     "YOUR_SECRET_KEY",
     "YOUR_CHECKSUM_KEY",
-    "SANDBOX" // or "PRODUCTION"
+    "9PAY DOMAIN"
 );
 ```
 
